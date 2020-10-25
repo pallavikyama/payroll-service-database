@@ -63,3 +63,15 @@ SELECT salary FROM employee_payroll WHERE name='Bill';
 ```
 SELECT * FROM employee_payroll WHERE start_date BETWEEN CAST('2018-01-01' AS DATE) AND DATE(NOW());
 ```
+
+## UC-6-AddNewColumnToTableAndUpdateTheRows
+### Adding gender field
+```
+ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;
+```
+
+### To set all male employees' gender to M and female employees' gender to F
+```
+UPDATE employee_payroll SET gender='M' WHERE name='Bill' or name='Charlie';
+UPDATE employee_payroll SET gender='F' WHERE name='Terisa';
+```
