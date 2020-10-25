@@ -52,3 +52,14 @@ INSERT INTO employee_payroll (name,salary,start_date) VALUES
 ```
 SELECT * FROM employee_payroll;
 ```
+
+## UC-5-RetrieveDataFromAParticularEmployee
+### Selecting Bill Entry
+```
+SELECT salary FROM employee_payroll WHERE name='Bill';
+```
+
+### Selecting all employees who joined in the given date range
+```
+SELECT * FROM employee_payroll WHERE start_date BETWEEN CAST('2018-01-01' AS DATE) AND DATE(NOW());
+```
