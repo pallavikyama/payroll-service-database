@@ -75,3 +75,13 @@ ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;
 UPDATE employee_payroll SET gender='M' WHERE name='Bill' or name='Charlie';
 UPDATE employee_payroll SET gender='F' WHERE name='Terisa';
 ```
+
+## UC-7-UsingGroupByToAnalyzeData
+### To do analysis by using database functions like sum, avg, min, max, count
+```
+SELECT gender,SUM(salary) FROM employee_payroll GROUP BY gender;
+SELECT gender,AVG(salary) FROM employee_payroll GROUP BY gender;
+SELECT gender,MIN(salary) FROM employee_payroll GROUP BY gender;
+SELECT gender,MAX(salary) FROM employee_payroll GROUP BY gender;
+SELECT gender,COUNT(name) FROM employee_payroll GROUP BY gender;
+```
