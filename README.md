@@ -1,6 +1,6 @@
 # Payroll-Service-Database
 ## UC-1-AbilityToCreateAPayrollServiceDatabase
-### Create database
+### To create database
 ```
 CREATE DATABASE payroll_service;
 ```
@@ -21,7 +21,7 @@ SELECT DATABASE();
 ```
 
 ## UC-2-CreateAndManageEmployeePayrollTable
-### Create Table with unique id as primary key, name, salary and start_date as fields
+### To create Table with unique id as primary key, name, salary and start_date as fields
 ```
 CREATE TABLE employee_payroll
 (
@@ -33,13 +33,13 @@ PRIMARY KEY (id)
 );
 ```
 
-### View Table Description
+### To view Table Description
 ```
 DESCRIBE employee_payroll;
 ```
 
 ## UC-3-CreateEmployeePayrollData
-### Insert Payroll Data into Table
+### To insert Payroll Data into Table
 ```
 INSERT INTO employee_payroll (name,salary,start_date) VALUES
 ('Bill',1000000.00,'2018-01-03'),
@@ -48,24 +48,24 @@ INSERT INTO employee_payroll (name,salary,start_date) VALUES
 ```
 
 ## UC-4-RetrieveDataFromDatabase
-### Retrieving all records from table
+### To retrieve all records from table
 ```
 SELECT * FROM employee_payroll;
 ```
 
 ## UC-5-RetrieveDataFromAParticularEmployee
-### Selecting Bill Entry
+### To view Bill Entry
 ```
 SELECT salary FROM employee_payroll WHERE name='Bill';
 ```
 
-### Selecting all employees who joined in the given date range
+### To view all employees who joined in the given date range
 ```
 SELECT * FROM employee_payroll WHERE start_date BETWEEN CAST('2018-01-01' AS DATE) AND DATE(NOW());
 ```
 
 ## UC-6-AddNewColumnToTableAndUpdateTheRows
-### Adding gender field
+### To add gender field
 ```
 ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;
 ```
@@ -84,4 +84,13 @@ SELECT gender,AVG(salary) FROM employee_payroll GROUP BY gender;
 SELECT gender,MIN(salary) FROM employee_payroll GROUP BY gender;
 SELECT gender,MAX(salary) FROM employee_payroll GROUP BY gender;
 SELECT gender,COUNT(name) FROM employee_payroll GROUP BY gender;
+```
+
+## UC-8-AddPhoneNoAddressAndDepartmentFields
+### To add phone_number,address with default and department with not-null as fields
+```
+ALTER TABLE employee_payroll ADD phone_number VARCHAR(25) AFTER name;
+ALTER TABLE employee_payroll ADD address VARCHAR(250) AFTER phone_number;
+ALTER TABLE employee_payroll ADD department VARCHAR(150) NOT NULL AFTER address;
+ALTER TABLE employee_payroll ALTER address SET DEFAULT 'TBD';
 ```
