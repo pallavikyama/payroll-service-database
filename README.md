@@ -104,3 +104,10 @@ ALTER TABLE employee_payroll ADD taxable_pay Double NOT NULL AFTER deductions;
 ALTER TABLE employee_payroll ADD tax Double NOT NULL AFTER taxable_pay;
 ALTER TABLE employee_payroll ADD net_pay Double NOT NULL AFTER tax;
 ```
+
+## UC-10.1-AddTerisaToBothSalesAndMarketingDepartments
+### To add the employee named 'Terisa' to both Sales and Marketing departments
+```
+UPDATE employee_payroll SET department='Sales' where name='Terisa';
+INSERT INTO employee_payroll (name, department, gender, basic_pay, deductions, taxable_pay, tax, net_pay, start_date) VALUES ('Terisa','Marketing','F',3000000.00,1000000.00,2000000.00,500000.00,1500000.00,'2019-11-13');
+```
