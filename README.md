@@ -94,3 +94,13 @@ ALTER TABLE employee_payroll ADD address VARCHAR(250) AFTER phone_number;
 ALTER TABLE employee_payroll ADD department VARCHAR(150) NOT NULL AFTER address;
 ALTER TABLE employee_payroll ALTER address SET DEFAULT 'TBD';
 ```
+
+## UC-9-AddEmployeePayrollRelatedFields
+### To add basic_pay(rename salary to basic_pay), deductions, taxable_pay, income_tax and net_pay fields
+```
+ALTER TABLE employee_payroll RENAME COLUMN salary TO basic_pay;
+ALTER TABLE employee_payroll ADD deductions Double NOT NULL AFTER basic_pay;
+ALTER TABLE employee_payroll ADD taxable_pay Double NOT NULL AFTER deductions;
+ALTER TABLE employee_payroll ADD tax Double NOT NULL AFTER taxable_pay;
+ALTER TABLE employee_payroll ADD net_pay Double NOT NULL AFTER tax;
+```
